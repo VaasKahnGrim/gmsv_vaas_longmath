@@ -14,8 +14,9 @@ LUA_FUNCTION(vaas_lm_add){
 	__int64 Out = SID + SID_2;
 	if(!Out || Out <= 0){
 		LUA->Push(false);
+	}else{
+ 		LUA->PushString(std::to_string(Out).c_str());
 	}
-	LUA->PushString(std::to_string(Out).c_str());
 	return 1;
 }
 
@@ -27,8 +28,9 @@ LUA_FUNCTION(vaas_lm_subtract){
 	__int64 Out = SID - SID_2;
 	if(!Out || Out <= 0){
 		LUA->Push(false);
+	}else{
+ 		LUA->PushString(std::to_string(Out).c_str());
 	}
-	LUA->PushString(std::to_string(Out).c_str());
 	return 1;
 }
 
@@ -40,8 +42,9 @@ LUA_FUNCTION(vaas_lm_multiply){
 	__int64 Out = SID * SID_2;
 	if(!Out || Out <= 0){
 		LUA->Push(false);
+	}else{
+ 		LUA->PushString(std::to_string(Out).c_str());
 	}
-	LUA->PushString(std::to_string(Out).c_str());
 	return 1;
 }
 
@@ -53,8 +56,9 @@ LUA_FUNCTION(vaas_lm_divide){
 	__int64 Out = SID / SID_2;
 	if(!Out || Out <= 0){
 		LUA->Push(false);
+	}else{
+ 		LUA->PushString(std::to_string(Out).c_str());
 	}
-	LUA->PushString(std::to_string(Out).c_str());
 	return 1;
 }
 

@@ -9,5 +9,7 @@ Compiles are preconfigured to allow you to compile for Linux, Windows and MacOSX
 #Credits
 
 This module was brought to you by the Vaas Dev Team and Rapadant Hosting. Feel Free to check the links below for more info!
+
 https://store.rapadanthosting.org/
+
 https://discord.gg/ZWaww7u

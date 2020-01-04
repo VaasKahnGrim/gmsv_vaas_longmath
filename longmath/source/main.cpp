@@ -13,14 +13,17 @@ LUA_FUNCTION(vaas_lm_add){
 	uint64_t SID = std::stoull(LUA->GetString(1));
 	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID + SID_2;
-	if(!Out){
-		LUA->PushBool(false);
-	}else if(Out > 18446744073709551615){
-		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
-		LUA->PushString("18446744073709551615");
-	}else{
+
+	//If you want to do validation of the value returned, you are on your own.
+
+	//if(!Out){
+		//LUA->PushBool(false);
+	//}else if(Out > 18446744073709551615){
+		//printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		//LUA->PushString("18446744073709551615");
+	//}else{
 		LUA->PushString(std::to_string(Out).c_str());
-	}
+	//}
 	return 1;
 }
 
@@ -30,14 +33,17 @@ LUA_FUNCTION(vaas_lm_subtract){
 	uint64_t SID = std::stoull(LUA->GetString(1));
 	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID - SID_2;
-	if(!Out){
-		LUA->PushBool(false);
-	}else if(Out > 18446744073709551615){
-		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
-		LUA->PushString("18446744073709551615");
-	}else{
+
+	//If you want to do validation of the value returned, you are on your own.
+
+	//if(!Out){
+		//LUA->PushBool(false);
+	//}else if(Out > 18446744073709551615){
+		//printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		//LUA->PushString("18446744073709551615");
+	//}else{
 		LUA->PushString(std::to_string(Out).c_str());
-	}
+	//}
 	return 1;
 }
 
@@ -47,14 +53,17 @@ LUA_FUNCTION(vaas_lm_multiply){
 	uint64_t SID = std::stoull(LUA->GetString(1));
 	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID * SID_2;
-	if(!Out){
-		LUA->PushBool(false);
-	}else if(Out > 18446744073709551615){
-		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
-		LUA->PushString("18446744073709551615");
-	}else{
+
+	//If you want to do validation of the value returned, you are on your own.
+
+	//if(!Out){
+		//LUA->PushBool(false);
+	//}else if(Out > 18446744073709551615){
+		//printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		//LUA->PushString("18446744073709551615");
+	//}else{
 		LUA->PushString(std::to_string(Out).c_str());
-	}
+	//}
 	return 1;
 }
 
@@ -64,14 +73,17 @@ LUA_FUNCTION(vaas_lm_divide){
 	uint64_t SID = std::stoull(LUA->GetString(1));
 	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID / SID_2;
-	if(!Out){
-		LUA->PushBool(false);
-	}else if(Out > 18446744073709551615){
-		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
-		LUA->PushString("18446744073709551615");
-	}else{
+
+	//If you want to do validation of the value returned, you are on your own.
+
+	//if(!Out){
+		//LUA->PushBool(false);
+	//}else if(Out > 18446744073709551615){
+		//printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		//LUA->PushString("18446744073709551615");
+	//}else{
 		LUA->PushString(std::to_string(Out).c_str());
-	}
+	//}
 	return 1;
 }
 

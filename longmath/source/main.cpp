@@ -10,11 +10,14 @@ using namespace GarrysMod::Lua;
 LUA_FUNCTION(vaas_lm_add){
 	LUA->CheckType(1,GarrysMod::Lua::Type::STRING);
 	LUA->CheckType(2,GarrysMod::Lua::Type::STRING);
-	uint64_t SID = std::stoll(LUA->GetString(1));
-	uint64_t SID_2 = std::stoll(LUA->GetString(2));
+	uint64_t SID = std::stoull(LUA->GetString(1));
+	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID + SID_2;
-	if(!Out || Out <= 0){
+	if(!Out){
 		LUA->PushBool(false);
+	}else if(Out > 18446744073709551615){
+		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		LUA->PushString("18446744073709551615");
 	}else{
 		LUA->PushString(std::to_string(Out).c_str());
 	}
@@ -24,11 +27,14 @@ LUA_FUNCTION(vaas_lm_add){
 LUA_FUNCTION(vaas_lm_subtract){
 	LUA->CheckType(1,GarrysMod::Lua::Type::STRING);
 	LUA->CheckType(2,GarrysMod::Lua::Type::STRING);
-	uint64_t SID = std::stoll(LUA->GetString(1));
-	uint64_t SID_2 = std::stoll(LUA->GetString(2));
+	uint64_t SID = std::stoull(LUA->GetString(1));
+	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID - SID_2;
-	if(!Out || Out <= 0){
+	if(!Out){
 		LUA->PushBool(false);
+	}else if(Out > 18446744073709551615){
+		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		LUA->PushString("18446744073709551615");
 	}else{
 		LUA->PushString(std::to_string(Out).c_str());
 	}
@@ -38,11 +44,14 @@ LUA_FUNCTION(vaas_lm_subtract){
 LUA_FUNCTION(vaas_lm_multiply){
 	LUA->CheckType(1,GarrysMod::Lua::Type::STRING);
 	LUA->CheckType(2,GarrysMod::Lua::Type::STRING);
-	uint64_t SID = std::stoll(LUA->GetString(1));
-	uint64_t SID_2 = std::stoll(LUA->GetString(2));
+	uint64_t SID = std::stoull(LUA->GetString(1));
+	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID * SID_2;
-	if(!Out || Out <= 0){
+	if(!Out){
 		LUA->PushBool(false);
+	}else if(Out > 18446744073709551615){
+		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		LUA->PushString("18446744073709551615");
 	}else{
 		LUA->PushString(std::to_string(Out).c_str());
 	}
@@ -52,11 +61,14 @@ LUA_FUNCTION(vaas_lm_multiply){
 LUA_FUNCTION(vaas_lm_divide){
 	LUA->CheckType(1,GarrysMod::Lua::Type::STRING);
 	LUA->CheckType(2,GarrysMod::Lua::Type::STRING);
-	uint64_t SID = std::stoll(LUA->GetString(1));
-	uint64_t SID_2 = std::stoll(LUA->GetString(2));
+	uint64_t SID = std::stoull(LUA->GetString(1));
+	uint64_t SID_2 = std::stoull(LUA->GetString(2));
 	uint64_t Out = SID / SID_2;
-	if(!Out || Out <= 0){
+	if(!Out){
 		LUA->PushBool(false);
+	}else if(Out > 18446744073709551615){
+		printMessage(LUA,"Overflow Prevented, returning maximum value inside.\n",0,255,0);
+		LUA->PushString("18446744073709551615");
 	}else{
 		LUA->PushString(std::to_string(Out).c_str());
 	}
@@ -65,16 +77,16 @@ LUA_FUNCTION(vaas_lm_divide){
 
 
 void Vaas_LongMath_init(GarrysMod::Lua::ILuaBase* LUA){
-	printMessage(LUA,"VaasDRM module loaded.\n",0,255,0);
+	printMessage(LUA,"Vaas LongMath module loaded.\n",0,255,0);
 	LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
 		LUA->PushCFunction(vaas_lm_add);
 		LUA->SetField(-2,"longmath_add");
 		LUA->PushCFunction(vaas_lm_subtract);
 		LUA->SetField(-2,"longmath_subtract");
 		LUA->PushCFunction(vaas_lm_multiply);
-		LUA->SetField(-2, "longmath_multiply");
+		LUA->SetField(-2,"longmath_multiply");
 		LUA->PushCFunction(vaas_lm_divide);
-		LUA->SetField(-2, "longmath_divide");
+		LUA->SetField(-2,"longmath_divide");
 	LUA->Pop();
 }
 
@@ -86,6 +98,6 @@ GMOD_MODULE_OPEN(){
 
 // Called when your module is closed
 GMOD_MODULE_CLOSE(){
-	printMessage(LUA,"VaasDRM module nolonger in use, unloading.\n",0,255,0);
+	printMessage(LUA,"Vaas LongMath module nolonger in use, unloading.\n",0,255,0);
 	return 0;
 }

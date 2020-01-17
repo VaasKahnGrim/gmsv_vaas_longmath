@@ -8,8 +8,10 @@ Compiles are preconfigured to allow you to compile for Linux, Windows and MacOSX
 
 #Credits
 
-This module was brought to you by the Vaas Dev Team and Rapadant Hosting. Feel Free to check the links below for more info!
+This module was Updated for you by the Vaas Dev Team and Rapadant Hosting. Originally created by General -HeX- Feel Free to check the links below for more info!
 
 https://store.rapadanthosting.org/
 
 https://discord.gg/ZWaww7u
+
+General -HeX- | May you always be remembered and inspire others to make skids loose their marbles. Eaight. Eaight. Eaight. Eaight.

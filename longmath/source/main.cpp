@@ -150,6 +150,62 @@ LUA_FUNCTION(vaas_lm_vec_divide){
 	return 1;
 }
 
+//
+// Basic Math but for Angles
+//
+LUA_FUNCTION(vaas_lm_ang_add){
+	LUA->CheckType(1,GarrysMod::Lua::Type::ANGLE);
+	LUA->CheckType(2,GarrysMod::Lua::Type::ANGLE);
+	QAngle ang1 = LUA->GetAngle(1);
+	QAngle ang2 = LUA->GetAngle(2);
+	QAngle ang_out;
+	ang_out.x = ang1.x+ang2.x;
+	ang_out.y = ang1.y+ang1.y;
+	ang_out.z = ang1.z+ang2.z;
+	LUA->PushAngle(ang_out);
+	return 1;
+}
+
+LUA_FUNCTION(vaas_lm_ang_sub){
+	LUA->CheckType(1,GarrysMod::Lua::Type::ANGLE);
+	LUA->CheckType(2,GarrysMod::Lua::Type::ANGLE);
+	QAngle ang1 = LUA->GetAngle(1);
+	QAngle ang2 = LUA->GetAngle(2);
+	QAngle ang_out;
+	ang_out.x = ang1.x-ang2.x;
+	ang_out.y = ang1.y-ang1.y;
+	ang_out.z = ang1.z-ang2.z;
+	LUA->PushAngle(ang_out);
+	return 1;
+}
+
+LUA_FUNCTION(vaas_lm_ang_multiply){
+	LUA->CheckType(1,GarrysMod::Lua::Type::ANGLE);
+	LUA->CheckType(2,GarrysMod::Lua::Type::ANGLE);
+	QAngle ang1 = LUA->GetAngle(1);
+	QAngle ang2 = LUA->GetAngle(2);
+	QAngle ang_out;
+	ang_out.x = ang1.x*ang2.x;
+	ang_out.y = ang1.y*ang1.y;
+	ang_out.z = ang1.z*ang2.z;
+	LUA->PushAngle(ang_out);
+	return 1;
+}
+
+LUA_FUNCTION(vaas_lm_ang_divide){
+	LUA->CheckType(1,GarrysMod::Lua::Type::ANGLE);
+	LUA->CheckType(2,GarrysMod::Lua::Type::ANGLE);
+	QAngle ang1 = LUA->GetAngle(1);
+	QAngle ang2 = LUA->GetAngle(2);
+	QAngle ang_out;
+	ang_out.x = ang1.x/ang2.x;
+	ang_out.y = ang1.y/ang1.y;
+	ang_out.z = ang1.z/ang2.z;
+	LUA->PushAngle(ang_out);
+	return 1;
+}
+
+
 
 void Vaas_LongMath_init(GarrysMod::Lua::ILuaBase* LUA){
 	#ifdef DEBUG
@@ -176,6 +232,16 @@ void Vaas_LongMath_init(GarrysMod::Lua::ILuaBase* LUA){
 			LUA->SetField(-2,"vec_multiply");
 			LUA->PushCFunction(vaas_lm_vec_divide);
 			LUA->SetField(-2,"vec_divide");
+
+			//Angles
+			LUA->PushCFunction(vaas_lm_ang_add);
+			LUA->SetField(-2,"ang_add");
+			LUA->PushCFunction(vaas_lm_ang_sub);
+			LUA->SetField(-2,"ang_sub");
+			LUA->PushCFunction(vaas_lm_ang_multiply);
+			LUA->SetField(-2,"ang_multiply");
+			LUA->PushCFunction(vaas_lm_ang_divide);
+			LUA->SetField(-2,"ang_divide");
 		LUA->SetField(-1,"longmath");
 	LUA->Pop();
 }

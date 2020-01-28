@@ -105,7 +105,7 @@ LUA_FUNCTION(vaas_lm_vec_add){
 	Vector vec2 = LUA->GetVector(2);
 	Vector vec_out;
 	vec_out.x = vec1.x+vec2.x;
-	vec_out.y = vec1.y+vec1.y;
+	vec_out.y = vec1.y+vec2.y;
 	vec_out.z = vec1.z+vec2.z;
 	LUA->PushVector(vec_out);
 	return 1;
@@ -118,7 +118,7 @@ LUA_FUNCTION(vaas_lm_vec_sub){
 	Vector vec2 = LUA->GetVector(2);
 	Vector vec_out;
 	vec_out.x = vec1.x-vec2.x;
-	vec_out.y = vec1.y-vec1.y;
+	vec_out.y = vec1.y-vec2.y;
 	vec_out.z = vec1.z-vec2.z;
 	LUA->PushVector(vec_out);
 	return 1;
@@ -131,7 +131,7 @@ LUA_FUNCTION(vaas_lm_vec_multiply){
 	Vector vec2 = LUA->GetVector(2);
 	Vector vec_out;
 	vec_out.x = vec1.x*vec2.x;
-	vec_out.y = vec1.y*vec1.y;
+	vec_out.y = vec1.y*vec2.y;
 	vec_out.z = vec1.z*vec2.z;
 	LUA->PushVector(vec_out);
 	return 1;
@@ -144,7 +144,7 @@ LUA_FUNCTION(vaas_lm_vec_divide){
 	Vector vec2 = LUA->GetVector(2);
 	Vector vec_out;
 	vec_out.x = vec1.x/vec2.x;
-	vec_out.y = vec1.y/vec1.y;
+	vec_out.y = vec1.y/vec2.y;
 	vec_out.z = vec1.z/vec2.z;
 	LUA->PushVector(vec_out);
 	return 1;
@@ -160,7 +160,7 @@ LUA_FUNCTION(vaas_lm_ang_add){
 	QAngle ang2 = LUA->GetAngle(2);
 	QAngle ang_out;
 	ang_out.x = ang1.x+ang2.x;
-	ang_out.y = ang1.y+ang1.y;
+	ang_out.y = ang1.y+ang2.y;
 	ang_out.z = ang1.z+ang2.z;
 	LUA->PushAngle(ang_out);
 	return 1;
@@ -173,7 +173,7 @@ LUA_FUNCTION(vaas_lm_ang_sub){
 	QAngle ang2 = LUA->GetAngle(2);
 	QAngle ang_out;
 	ang_out.x = ang1.x-ang2.x;
-	ang_out.y = ang1.y-ang1.y;
+	ang_out.y = ang1.y-ang2.y;
 	ang_out.z = ang1.z-ang2.z;
 	LUA->PushAngle(ang_out);
 	return 1;
@@ -186,7 +186,7 @@ LUA_FUNCTION(vaas_lm_ang_multiply){
 	QAngle ang2 = LUA->GetAngle(2);
 	QAngle ang_out;
 	ang_out.x = ang1.x*ang2.x;
-	ang_out.y = ang1.y*ang1.y;
+	ang_out.y = ang1.y*ang2.y;
 	ang_out.z = ang1.z*ang2.z;
 	LUA->PushAngle(ang_out);
 	return 1;
@@ -199,7 +199,7 @@ LUA_FUNCTION(vaas_lm_ang_divide){
 	QAngle ang2 = LUA->GetAngle(2);
 	QAngle ang_out;
 	ang_out.x = ang1.x/ang2.x;
-	ang_out.y = ang1.y/ang1.y;
+	ang_out.y = ang1.y/ang2.y;
 	ang_out.z = ang1.z/ang2.z;
 	LUA->PushAngle(ang_out);
 	return 1;

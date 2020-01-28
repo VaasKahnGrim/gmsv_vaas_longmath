@@ -3,24 +3,14 @@
 
 #include "GarrysMod/Lua/Interface.h"
 
-
-
 using namespace GarrysMod::Lua;	
 
-static void printMessage(GarrysMod::Lua::ILuaBase* LUA,const char* str,int r,int g,int b){
-	LUA->PushSpecial(GarrysMod::Lua::SPECIAL_GLOB);
-	LUA->GetField(-1,"Color");
-	LUA->PushNumber(r);
-	LUA->PushNumber(g);
-	LUA->PushNumber(b);
-	LUA->Call(3,1);
-	int ref = LUA->ReferenceCreate();
-	LUA->GetField(-1,"MsgC");
-	LUA->ReferencePush(ref);
-	LUA->PushString(str);
-	LUA->Call(2,0);
-	LUA->Pop();
-	LUA->ReferenceFree(ref);
-}
+#ifdef _WIN32
+	#include<windows.h>
+	#include<libloaderapi.h>
 
-
+	typedef void(*msg_fn)(const char* msg, int r, int g, int b);
+	static msg_fn msg = (msg_fn)GetProcAddress(GetModuleHandleA("tier0.dll"), "Msg");
+#elif linux
+	#include<linux shit for this>
+#endif
